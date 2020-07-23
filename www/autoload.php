@@ -18,9 +18,6 @@ $autoload = function($class)
 
         require_once __DIR__ . '/classes/AbstrstractModel.php';
 
-    } elseif(file_exists(__DIR__ . '/controllers/AddController.php')) {
-
-        require_once __DIR__ . '/controllers/AddController.php';
     }
 };
 
