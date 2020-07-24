@@ -8,7 +8,7 @@
     <title>add new post</title>
 </head>
 <body>
-<form action="/index.php?ctrl=News&act=Add" method="post">
+<form action="/index.php?ctrl=Admin&act=Add" method="post">
     <p><b>Заголовок</b></p>
     <input type="text" id="header" name="header">
     <br>

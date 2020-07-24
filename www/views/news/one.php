@@ -16,7 +16,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . "../../autoload.php";
 <div><?php echo $article->text; ?></div>
 <br>
 <a href="../../index.php">Вернуться ко всем новостям</a>
-<a href="/index.php?ctrl=News&act=Delete&id=<?php echo $article->id ?>">Удалить статью</a>
+<a href="/index.php?ctrl=Admin&act=Delete&id=<?php echo $article->id ?>">Удалить статью</a>
 
 </body>
 </html>
