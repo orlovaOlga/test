@@ -10,7 +10,7 @@
 <body>
 
 <?php foreach ($articles as $article) :?>
-    <a href="../../index.php?ctrl=News&act=One&id=<?php echo $article->id?>"><h3><?php echo $article->header."<br>";?></h3> </a>
+    <a href="/index.php?ctrl=News&act=One&id=<?php echo $article->id?>"><h3><?php echo $article->header."<br>";?></h3> </a>
     <?php echo $article->created_at . "<br>"; ?>
 <?php endforeach;?>
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__.'/../autoload.php';
+require_once __DIR__.'/../classes/SqlConnector.php';
 
 class NewsController
 {
@@ -33,6 +34,15 @@ class NewsController
                 header("Location: http://localhost:8080/index.php");
             }
         }
+    }
+
+    public function actionDelete()
+    {
+        $id = $_GET['id'];
+        $db = new sqlConnector();
+        $query = 'DELETE FROM all_news WHERE id='.$id.'';
+        $db->sqlExecute($query);
+        header("Location: http://localhost:8080/index.php");
     }
 
 }
