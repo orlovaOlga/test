@@ -14,9 +14,9 @@ $autoload = function($class)
 
         require_once __DIR__ . DIRECTORY_SEPARATOR . 'classes'.DIRECTORY_SEPARATOR . $class . '.php';
 
-    } elseif (file_exists(__DIR__. '/Exceptions/' . $class . '.php')) {
+    } elseif (file_exists(__DIR__ . '/exceptions/' . $class . '.php')) {
 
-        require_once __DIR__ . DIRECTORY_SEPARATOR . 'Exceptions'.DIRECTORY_SEPARATOR . $class . '.php';
+        require_once __DIR__ . DIRECTORY_SEPARATOR. 'exceptions' .DIRECTORY_SEPARATOR . $class . '.php';
     }
 };
 
