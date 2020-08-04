@@ -7,19 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NEWS</title>
 </head>
-<body>
 
+<div class="header">
+    <font size="5" color="black" face="Tahoma">
+<h1>Новости</h1>
+    </font>
+</div>
+
+<style>
+    body {
+        background: #d0e9fa;
+        color: #100909;
+    }
+    a {
+        color: #000000;
+        padding: 2px;
+        transition: 1s linear;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #ffffff;
+    }
+    .text {
+        text-align: center;
+    }
+    .header {
+        text-align:  center;
+        font-style: italic;
+    }
+</style>
+<body>
+<div class="text">
 <?php foreach ($articles as $article) :?>
-    <a href="/index.php?ctrl=News&act=One&id=<?php echo $article->id?>"><h3><?php echo $article->header."<br>";?></h3> </a>
-    <?php echo $article->created_at . "<br>"; ?>
+    <a href="/index.php?ctrl=News&act=One&id=<?php echo $article->id?>"><h2><?php echo $article->header."<br>";?></h2> </a>
+    <?php echo $article->created_at . "<br><br><br>"; ?>
 <?php endforeach;?>
 
 <br>
 <br>
 <br>
 <br>
-
-<a href="views/add.php">Добавить новость</a>
+</div>
+<form action="../../views/add.php" target="_self">
+    <button>Добавить новость</button>
+</form>
 </body>
 </html>
 

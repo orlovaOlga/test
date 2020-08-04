@@ -8,16 +8,45 @@
     <title>add new post</title>
 </head>
 <body>
-<form action="/index.php?ctrl=Admin&act=Add" method="post">
+<style>
+    body {
+        background: #d0e9fa; /* Цвет фона */
+        color: #100909; /* Цвет текста */
+    }
+    a {
+        color: #000000; /* Цвет текста */
+        padding: 2px; /* Поля вокруг текста */
+        text-decoration: none;
+    }
+    a:hover {
+        color: #ffffff; /* Цвет текста */
+    }
+    .text {
+        text-align: center;
+    }
+    input[type=text] {
+        height: 30px;
+    }
+    p {
+        font-style: italic;
+    }
+
+</style>
+
+<form action="../index.php" target="_self">
+    <button>На главную</button>
+</form>
+<div class="text">
+<form action="../index.php?ctrl=Admin&act=Add" method="post">
     <p><b>Заголовок</b></p>
-    <input type="text" id="header" name="header">
+    <input type="text" autocomplete="off" id="header" name="header" size="148" >
     <br>
     <p><b>Текст статьи</b></p>
-    <p><textarea name="text"></textarea></p>
+    <p><textarea rows="40" cols="140" name="text"></textarea></p>
     <br>
     <input type="submit">
 </form>
+</div>
 
-<a href="../index.php">На главную</a>
 </body>
 </html>

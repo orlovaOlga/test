@@ -2,100 +2,53 @@
 
 class SqlConnector
 {
-    public $res;
+    private $dbh;
+    private $calssName = 'stdClass';
+
 
     public function __construct()
     {
-       $this->res = mysqli_connect('localhost', 'root', '1111', 'News');
-    }
-
-    public function queryAll($query, $class = 'stdClass')
-    {
-        mysqli_real_query($this->res, $query);
-        if(!empty(mysqli_error_list($this->res)))
-        {
-            var_dump(mysqli_error_list($this->res));
+        try {
+            $this->dbh = new PDO('mysql:dbname=News; host:localhost', 'root', '1111');
+            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {
+            header('HTTP/1.1 403 Connection to database failed');
+            $view = new View();
+            $view->error = $e->getMessage();
+            $view->display('403.html');
             die;
         }
-        $result = mysqli_use_result($this->res);
-        $array = [];
-        while ($row = mysqli_fetch_object($result, $class)) {
-            $array[] = $row;
-        }
-        mysqli_close($this->res);
-        return $array;
     }
 
-    public function queryOne($qery, $class = 'stdClass')
+    public function setClassName($className)
     {
-        return $this->queryAll($qery, $class)[0];
+        $this->calssName = $className;
     }
 
-    public function makeQueryForUpdating($id, $header = '', $text = '')
+    public function query($sql, $params = [])
     {
-        if($header != '' && $text != '')
-        {
-            $query = 'UPDATE all_news SET header = '.$header.', text = '.$text.' WHERE id = '.$id.'';
-        }
-        elseif($header != '' && $text == '')
-        {
-            $query = 'UPDATE all_news SET header = '.$header.' WHERE id = '.$id.'';
-        }
-        elseif($header == '' && $text != '')
-        {
-            $query = 'UPDATE all_news SET text = '.$text.' WHERE id = '.$id.'';
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($params);
+        return $sth->fetchAll(PDO::FETCH_CLASS, $this->calssName);
+    }
+
+    public function execute($sql, $params = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
+       /* if($sth->execute($params) == false) {
+            throw new E403Exception('Неудалось выполнить запрос к базе данных, проверьте параметры');
         } else {
-            $query = null;
-        }
 
-        return $query;
-    }
+            return $sth->execute($params);
+        }*/
 
-    public function updateRecords($query)
-    {
-        if($query === null)
-        {
-            return false;
-        }
-        mysqli_real_query($this->res, $query);
-        if(!empty(mysqli_error_list($this->res)))
-        {
-            var_dump(mysqli_error_list($this->res));
-            die;
-        }
-        mysqli_close($this->res);
-        return true;
-    }
 
-    public function getRecord($query, $class = 'stdClass')
-    {
-
-        mysqli_real_query($this->res, $query);
-        if(!empty(mysqli_error_list($this->res)))
-        {
-            var_dump(mysqli_error_list($this->res));
-            die;
-        }
-        $result = mysqli_use_result($this->res);
-        $array = [];
-        while ($row = mysqli_fetch_object($result, $class)) {
-            $array[] = $row;
-        }
-        mysqli_close($this->res);
-        return $array;
     }
 
 
-    public function sqlExecute($query)
-    {
-        mysqli_real_query($this->res, $query);
-        if(!empty(mysqli_error_list($this->res)))
-        {
-            var_dump(mysqli_error_list($this->res));
-            die;
-        }
-        mysqli_close($this->res);
-        return true;
-    }
+
+
 
 }
