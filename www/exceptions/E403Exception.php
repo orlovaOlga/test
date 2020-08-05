@@ -2,7 +2,7 @@
 
 
 class E403Exception
-    extends PDOException
+    extends Exception
 {
 
 }

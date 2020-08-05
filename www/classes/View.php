@@ -28,7 +28,6 @@ class View
         if (!file_exists($path)) {
             throw new E404Exception('страница не найдена');
         } else {
-
             include self::PATH . $template;
             $content = ob_get_contents();
             ob_end_clean();

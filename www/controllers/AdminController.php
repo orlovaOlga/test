@@ -25,20 +25,9 @@ class AdminController extends AbstrstractModel
             $news = new NewsModel();
             $news->header = $header;
             $news->text = $text;
-            try {
-                $news->save();
-            }
-            catch (E403Exception $e) {
-
-                header("HTTP/1.1 {$e->getCode()} Connection to database failed");
-                $view = new View();
-                $view->error = $e->getMessage();
-                $view->display($e->getCode() .'.html');
-                die;
-            }
-
-            header("Location: http://localhost:8080/index.php");
+            $news->save();
         }
+            header("Location: http://localhost:8080/index.php");
     }
 
 
@@ -46,17 +35,7 @@ class AdminController extends AbstrstractModel
     {
         $news = new NewsModel();
         $news->id = $_GET['id'];
-
-        try {
-            $news->delete();
-        }
-        catch (E403Exception $e) {
-            header("HTTP/1.1 {$e->getCode()} Connection to database failed");
-            $view = new View();
-            $view->error = $e->getMessage();
-            $view->display($e->getCode() .'.html');
-            die;
-        }
+        $news->delete();
 
         header("Location: http://localhost:8080/index.php");
     }
@@ -86,21 +65,18 @@ class AdminController extends AbstrstractModel
             $news->header = trim($header);
             $news->text = trim($text);
             $news->id = $id;
-
-            try {
-                $news->save();
-            }
-            catch (E403Exception $e) {
-                header("HTTP/1.1 {$e->getCode()} Connection to database failed");
-                $view = new View();
-                $view->error = $e->getMessage();
-                $view->display($e->getCode() .'.html');
-                die;
-            }
+            $news->save();
 
             header("Location: http://localhost:8080/index.php");
         }
 
     }
 
+    public function actionGetLogs()
+    {
+        $logs = Logs::showLogs();
+        $view = new View();
+        $view->logs = $logs;
+        $view->display('logs.php');
+    }
 }

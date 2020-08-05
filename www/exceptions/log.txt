@@ -1,0 +1,12 @@
+2020-08-04 17:00:26 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-04 17:05:23 || /home/olga/test/www/classes/AbstrstractModel.php || SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SEECT * FROM all_news WHERE id='37'' at line 1 || line 91
+2020-08-04 17:12:10 || /home/olga/test/www/controllers/AdminController.php || статья не была добавлена. Заголовок и текст не могут быть пустыми || line 22
+2020-08-04 18:11:51 || /home/olga/test/www/controllers/AdminController.php || статья не была добавлена. Заголовок и текст не могут быть пустыми || line 22
+2020-08-04 20:02:19 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:40:34 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:42:10 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:43:04 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:43:47 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:44:14 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
+2020-08-05 11:47:00 || /home/olga/test/www/classes/SqlConnector.php || SQLSTATE[HY000] [1045] Access denied for user 'rot'@'localhost' (using password: YES) || line 16
+2020-08-05 11:53:11 || /home/olga/test/www/classes/AbstrstractModel.php || статья не найдена || line 96
